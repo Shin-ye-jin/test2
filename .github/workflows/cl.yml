@@ -9,9 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      users: actions/checkout@v2
+      uses: actions/checkout@v2
     - name: Setup Python
-      users: action/setup-python@v2
+      uses: action/setup-python@v2
       with:
         python-version: '3.x'
     - name: Install pytest
@@ -21,12 +21,12 @@ jobs:
   run-program:
     needs: [test-program]
     runs-on: ubuntu-latest
-  steps:
-  - name: Checkout
-    users: actions/checkout@v2
-  - name: Setup Python
-    users: actions/setup-python@v2
-    with:
-      python-version: '3.x'
-  - name: Run program
-    run: python app.py
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Setup Python  
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+    - name: Run program
+      run: python app.py
